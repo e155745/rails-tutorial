@@ -2,12 +2,16 @@
 <html>
   <head>
     <title><%= full_title(yield(:title)) %></title>
-    <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render "layouts/rails_default" %>
+    <%= render 'layouts/shim' %>
+    <!-- app/views/layouts/_shim.html.erbというファイルを探してその内容を評価し、ビューに挿入している -->
   </head>
-
   <body>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+    <!-- app/views/layouts/_header.html.erbというファイルを探してその内容を評価し、ビューに挿入している -->
+    <div class="container">
+      <%= yield %>
+      <%= render "layouts/footer" %>
+    </div>
   </body>
 </html>
