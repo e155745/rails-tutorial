@@ -10,8 +10,12 @@
     <%= render 'layouts/header' %>
     <!-- app/views/layouts/_header.html.erbというファイルを探してその内容を評価し、ビューに挿入している -->
     <div class="container">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
       <%= yield %>
       <%= render "layouts/footer" %>
+      <%= debug(params) if Rails.env.development? %>
     </div>
   </body>
 </html>
